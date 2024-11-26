@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'core/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'core/app.css' %}">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="#">
+            <img src="" alt="Logo">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{% url 'index' %}">Home</a>
+            <a class="navbar-item" href="#">About</a>
+            <a class="navbar-item" href="#">Services</a>
+            <a class="navbar-item" href="#">Portfolio</a>
+            <a class="navbar-item" href="#">Contact</a>
+        </div>
+
+        <div class="navbar-end">
+            <a href="#" class="button is-light cta-button">Get Started</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const burger = document.querySelector('.navbar-burger');
+        const menu = document.querySelector('#navbarMenu');
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+        });
+    });
+</script>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
