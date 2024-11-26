@@ -1,0 +1,21 @@
+services:
+  # Django application
+  web:
+    build: .
+    container_name: rwebley_website
+    restart: always
+    volumes:
+      - .:/app/
+      - /home/application_files/website/media/:/app/mediafiles
+      - /home/application_files/website/staticfiles/:/app/staticfiles
+    ports:
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - /home/application_files/website/.env.prod
+
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
